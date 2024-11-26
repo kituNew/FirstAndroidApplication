@@ -1,4 +1,4 @@
-package com.example.firstandroidapplication.screen
+package com.example.firstandroidapplication.screen.translation
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -24,26 +24,34 @@ fun TranslationScreen(
 ) {
     val uiState = viewModel.uiState.collectAsState()
 
-    Column (
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp)
+    Column(
+        modifier = Modifier.fillMaxSize()
     ) {
-        TopAppBar(title = { Text("Translation App")})
+        TopAppBar(title = { Text("Translation App") })
 
         TextInput(
             language = uiState.value.sourceLang,
             text = uiState.value.inputText,
-            onTextChange = {viewModel.updateInputText(it)},
-            onClearText = {viewModel.clearInputText()}
+            onTextChange = { viewModel.updateInputText(it) },
+            onClearText = { viewModel.clearInputText() },
+            modifier = Modifier.padding(horizontal = 16.dp),
         )
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        TranslateButton(onTranslate = {viewModel.translateText()})
+        TranslateButton(
+            onTranslate = { viewModel.translateText() },
+            modifier = Modifier.padding(horizontal = 16.dp),
+        )
+
+        Spacer(modifier = Modifier.height(16.dp))
 
         uiState.value.translatedText?.let {
-            TranslationResult(it)
+            TranslationResult(
+                result = it,
+                modifier = Modifier.padding(horizontal = 16.dp),
+            )
         }
     }
+
 }
