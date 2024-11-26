@@ -5,8 +5,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.RowScope
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
@@ -17,24 +15,19 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.vectorResource
-import androidx.compose.ui.tooling.preview.Preview
 import com.example.firstandroidapplication.ui.theme.FirstAndroidApplicationTheme
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.vectorResource
 import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.firstandroidapplication.screen.TranslationScreen
+import com.example.firstandroidapplication.screen.history.HistoryScreen
+import com.example.firstandroidapplication.screen.translation.TranslationScreen
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.selects.select
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -63,7 +56,7 @@ class MainActivity : ComponentActivity() {
                 composable("mic") {}
                 composable("cam") {}
                 composable("translate") { TranslationScreen() }
-                composable("history") {}
+                composable("history") { HistoryScreen() }
                 composable("star") {}
             }
         }
